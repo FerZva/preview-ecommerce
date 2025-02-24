@@ -1,5 +1,7 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import { products } from "../services/data";
+// import Slider from "../components/Slider";
 
 export default function Home() {
   return (
@@ -39,14 +41,28 @@ export default function Home() {
             </li>
           </ul>
         </div>
-        <div className="p-4 min-w-[70%] h-full">
-          <div className="min-w-full bg-slate-800 min-h-full text-white">
-            Banners
-          </div>
-        </div>
+        <div className="p-4 min-w-[70%] h-full">{/* <Slider /> */}</div>
       </section>
       {/* Today's Section */}
-      <div>Today Offers</div>
+      <div className="overflow-hidden w-full h-auto">
+        <div className="flex justify-between items-center">
+          <h2>Flash Sales</h2>
+          <div>Timer</div>
+        </div>
+        <div className="flex flex-row gap-8">
+          {products.map((product) => (
+            <article key={product.productName}>
+              <div>
+                {product.images && product.images[0] && (
+                  <img src={product.images[0]} alt={product.productName} />
+                )}
+              </div>
+              <div>{product.productName}</div>
+              <div>{product.productPrice}</div>
+            </article>
+          ))}
+        </div>
+      </div>
       {/* Categories */}
       <div>Categories</div>
       {/* This Month */}

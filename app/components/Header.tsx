@@ -1,12 +1,21 @@
 import React from "react";
 import Link from "next/link";
 import { Search, ShoppingCart, Heart } from "lucide-react";
+import Image from "next/image";
+import LOGO from "../../public/LOGO.png";
 
 const Header = () => {
   return (
     <header className="w-full sticky flex justify-between items-center py-4 lg:px-20 border border-solid border-gray-200 dark:border-gray-800">
       <div>
-        <h1 className="text-bold">LOGO</h1>
+        <Image
+          src={LOGO}
+          alt="Logo"
+          width={1000}
+          height={1000}
+          placeholder="blur"
+          className="max-w-20 max-h-20"
+        />
       </div>
       <nav>
         <ul className="flex gap-4">
