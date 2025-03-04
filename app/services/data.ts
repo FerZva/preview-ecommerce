@@ -1,4 +1,5 @@
 import { Products } from "./interfaces";
+import { Slides } from "./interfaces";
 
 export const products: Products[] = [
   {
@@ -8,9 +9,9 @@ export const products: Products[] = [
     colors: ["red", "blue", "green"],
     sizes: ["small", "medium", "large"],
     images: [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
     ],
     rating: 4.5,
     reviews: 100,
@@ -22,9 +23,9 @@ export const products: Products[] = [
     colors: ["red", "blue", "green"],
     sizes: ["small", "medium", "large"],
     images: [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
     ],
     rating: 4.5,
     reviews: 100,
@@ -36,9 +37,9 @@ export const products: Products[] = [
     colors: ["red", "blue", "green"],
     sizes: ["small", "medium", "large"],
     images: [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
     ],
     rating: 4.5,
     reviews: 100,
@@ -50,9 +51,9 @@ export const products: Products[] = [
     colors: ["red", "blue", "green"],
     sizes: ["small", "medium", "large"],
     images: [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
     ],
     rating: 4.5,
     reviews: 100,
@@ -64,9 +65,9 @@ export const products: Products[] = [
     colors: ["red", "blue", "green"],
     sizes: ["small", "medium", "large"],
     images: [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
+      "../../public/iphone16.png",
     ],
     rating: 4.5,
     reviews: 100,
@@ -378,5 +379,36 @@ export const products: Products[] = [
     ],
     rating: 4.5,
     reviews: 100,
+  },
+];
+
+export const slides: Slides[] = [
+  {
+    id: 1,
+    imageUrl: "/iphonebanner.jpg",
+    title: "",
+    description: "",
+    link: "/collections/summer",
+  },
+  {
+    id: 2,
+    imageUrl: "/applewatchbanner.jpg",
+    title: "",
+    description: "",
+    link: "/collections/limited",
+  },
+  {
+    id: 3,
+    imageUrl: "/playstationbanner.jpg",
+    title: "",
+    description: "",
+    link: "/collections/new",
+  },
+  {
+    id: 4,
+    imageUrl: "/xboxbanner.jpg",
+    title: "",
+    description: "",
+    link: "/collections/essentials",
   },
 ];

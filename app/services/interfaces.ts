@@ -8,3 +8,11 @@ export interface Products {
   rating?: number;
   reviews?: number;
 }
+
+export interface Slides {
+  id: number;
+  imageUrl: string;
+  title: string;
+  description: string;
+  link: string;
+}
