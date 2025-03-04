@@ -4,6 +4,7 @@ import { slides } from "../services/data";
 import Slider from "../components/Slider";
 import ProductCard from "../components/ProductCard";
 import CountdownTimer from "../components/CountDownTimer";
+import { products } from "../services/data";
 
 export default function Home() {
   return (
@@ -81,20 +82,10 @@ export default function Home() {
             <ArrowRight className="cursor-pointer" />
           </div>
         </div>
-        <div className="flex flex-row gap-8">
-          <ProductCard />
-          {/* {products.map((product) => (
-            <article key={product.productName}>
-              <div className="">
-                {product.images && product.images[0] && (
-                  <img src={product.images[0]} alt={product.productName} />
-                )}
-                <button>Add To Cart</button>
-              </div>
-              <p>{product.productName}</p>
-              <p>{product.productPrice}</p>
-            </article>
-          ))} */}
+        <div className="flex flex-row gap-8 mx-20 my-8 ">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </section>
       {/* Categories */}
