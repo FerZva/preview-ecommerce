@@ -1,5 +1,6 @@
 import { Products } from "./interfaces";
 import { Slides } from "./interfaces";
+import { Smartphone } from "lucide-react";
 
 export const products: Products[] = [
   {
@@ -484,6 +485,49 @@ export const products: Products[] = [
 //     reviews: 100,
 //   },
 // ];
+
+export const categories = [
+  {
+    id: 1,
+    name: "Summer",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 2,
+    name: "Limited",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 3,
+    name: "New",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 4,
+    name: "Essentials",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 5,
+    name: "Accessories",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 6,
+    name: "Collections",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 7,
+    name: "Sale",
+    imageUrl: Smartphone,
+  },
+  {
+    id: 8,
+    name: "Gifts",
+    imageUrl: Smartphone,
+  },
+];
 
 export const slides: Slides[] = [
   {

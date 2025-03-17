@@ -1,8 +1,14 @@
 "use client";
-import { ArrowLeft, ArrowRight, ChevronRight, ChevronLeft } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronRight,
+  ChevronLeft,
+  Smartphone,
+} from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { slides, products } from "../services/data";
+import { slides, products, categories } from "../services/data";
 import Slider from "../components/Slider";
 import ProductCard from "../components/ProductCard";
 import CountdownTimer from "../components/CountDownTimer";
@@ -236,9 +242,104 @@ export default function Home() {
             <ArrowRight className="cursor-pointer" />
           </div>
         </div>
+        <div>
+          <div className=" mx-20 overflow-hidden mt-6 w-full">
+            <div className="flex gap-4 w-full ">
+              {/* Categories map */}
+              {categories.map(({ id, name, imageUrl: Icon }) => (
+                <div
+                  key={id}
+                  className="flex flex-col items-center justify-center min-h-[200px] min-w-[200px] p-4 border rounded-lg shadow-md hover:bg-red-500 transition hover:text-white"
+                >
+                  <Icon className="w-6 h-6 " />
+                  <span className="mt-2 text-sm font-medium">{name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
       {/* This Month */}
-      <div>This Month</div>
+      <section className="overflow-hidden w-full h-auto mt-20">
+        <div className="flex justify-between items-center mx-20">
+          <div className="flex items-center gap-2">
+            <svg
+              width="20"
+              height="40"
+              viewBox="0 0 20 40"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="20" height="40" rx="4" fill="#DB4444" />
+            </svg>
+
+            <h2 className="text-red-500 font-bold">Best Selling Products</h2>
+          </div>
+          <div></div>
+        </div>
+        {/* Products */}
+        <div className=" mx-20 overflow-hidden mt-6">
+          <div className="flex gap-4">
+            {products.slice(0, 4).map((product) => (
+              <div
+                key={product.id}
+                className="min-w-[calc(20%-8px)] flex-shrink-0"
+              >
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+          <div className="w-full bg-slate-950 min-h-[600px] flex items-center justify-between p-8 my-20">
+            <div className="text-white">
+              <p>Categories</p>
+              <h2>Enhance Your Music Experience</h2>
+              <div>Timer</div>
+              <button>Buy Now!</button>
+            </div>
+            <div className="relative">
+              <svg
+                width="818"
+                height="500"
+                viewBox="0 0 818 500"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g opacity="0.3" filter="url(#filter0_f_79_1203)">
+                  <ellipse cx="452" cy="250" rx="252" ry="250" fill="#D9D9D9" />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_79_1203"
+                    x="0"
+                    y="-200"
+                    width="904"
+                    height="900"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="100"
+                      result="effect1_foregroundBlur_79_1203"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+              <img
+                src="/speaker.png"
+                alt="Speaker"
+                className="absolute top-0 left-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Our Products */}
       <div>Our Products</div>
       {/* Featured */}
