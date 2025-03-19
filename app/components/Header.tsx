@@ -1,12 +1,27 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Search, ShoppingCart, Heart } from "lucide-react";
 import Image from "next/image";
+import {
+  LogoutLink,
+  useKindeBrowserClient,
+} from "@kinde-oss/kinde-auth-nextjs";
 import LOGO from "../../public/LOGO.png";
 
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 const Header = () => {
+  const { user, isAuthenticated, isLoading } = useKindeBrowserClient();
   return (
-    <header className="w-full sticky flex justify-between items-center py-4 lg:px-20 border border-solid border-gray-200 dark:border-gray-800">
+    <header className="w-full sticky top-0 flex justify-between items-center py-4 lg:px-20 border border-solid border-gray-200 dark:border-gray-800">
       <div>
         <Image
           src={LOGO}
@@ -52,6 +67,37 @@ const Header = () => {
           <Link href="#" className="mx-2">
             <ShoppingCart />
           </Link>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              {isAuthenticated && user?.picture && (
+                <Image
+                  src={user?.picture}
+                  alt="Profile Picture"
+                  width={50}
+                  height={50}
+                  className="rounded-full mx-auto my-2 cursor-pointer"
+                  placeholder="blur"
+                  blurDataURL={user?.picture}
+                />
+              )}
+              {isAuthenticated && user && !user?.picture && (
+                <div className="h-7 w-7 rounded-full mx-auto my-2 bg-zinc-800 text-xs flex justify-center items-center">
+                  {user?.given_name?.[0]}
+                </div>
+              )}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem>
+                <LogoutLink>Log out</LogoutLink>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
