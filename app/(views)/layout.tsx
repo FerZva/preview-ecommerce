@@ -4,6 +4,7 @@ import "../globals.css";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { CartProvider } from "../context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-w-full h-full`}
       >
-        <div className="min-w-full h-auto flex flex-col items-center justify-center">
-          <Banner />
-          <Header />
-        </div>
-        {children}
-        <Footer />
+        <CartProvider>
+          <div className="min-w-full h-auto flex flex-col items-center justify-center">
+            <Banner />
+            <Header />
+          </div>
+          {children}
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

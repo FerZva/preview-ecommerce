@@ -8,6 +8,7 @@ import {
   useKindeBrowserClient,
 } from "@kinde-oss/kinde-auth-nextjs";
 import LOGO from "../../public/LOGO.png";
+import { useCart } from "../context/CartContext";
 
 import {
   DropdownMenu,
@@ -20,6 +21,8 @@ import {
 
 const Header = () => {
   const { user, isAuthenticated, isLoading } = useKindeBrowserClient();
+  const { cart } = useCart();
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   return (
     <header className="w-full sticky top-0 flex justify-between items-center py-4 lg:px-20 border border-solid border-gray-200 dark:border-gray-800">
       <div>
@@ -64,8 +67,13 @@ const Header = () => {
           <Link href="#" className="mx-2">
             <Heart />
           </Link>
-          <Link href="#" className="mx-2">
+          <Link href="/cart" className="mx-2 flex justify-center items-center">
             <ShoppingCart />
+            {totalItems > 0 && (
+              <span className="flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-500 rounded-full">
+                {totalItems}
+              </span>
+            )}
           </Link>
 
           <DropdownMenu>
@@ -87,12 +95,18 @@ const Header = () => {
                 </div>
               )}
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="bg-white dark:bg-zinc-800 shadow-lg rounded-lg p-4 w-48">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuSeparator className="bg-slate-200" />
+              <DropdownMenuItem className="cursor-pointer">
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                Billing
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                Team
+              </DropdownMenuItem>
               <DropdownMenuItem>
                 <LogoutLink>Log out</LogoutLink>
               </DropdownMenuItem>

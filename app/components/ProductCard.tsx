@@ -1,8 +1,10 @@
 "use client";
 import type React from "react";
-
 import { Products } from "../services/interfaces";
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Heart, Eye } from "lucide-react";
 
@@ -13,10 +15,20 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const { addToCart } = useCart();
+  const { isAuthenticated } = useKindeBrowserClient();
+  const router = useRouter();
 
   const handleAddToCart = () => {
     console.log(`Added ${product.name} to cart`);
     // Here you would typically dispatch to a cart context or make an API call
+    if (!isAuthenticated) {
+      // Redirige a la página de inicio de sesión si no está autenticado
+      router.push("/api/auth/login");
+      return;
+    }
+    addToCart(product);
+    console.log(`Added ${product.name} to cart`);
   };
 
   const handleToggleWishlist = (e: React.MouseEvent) => {
