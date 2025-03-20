@@ -47,7 +47,7 @@ const Header = () => {
             <Link href="/contact">Contact</Link>
           </li>
           <li className="font-bold hover:underline">
-            <Link href="/contact">Sign Up</Link>
+            <Link href="/api/auth/login">Sign In</Link>
           </li>
         </ul>
       </nav>
