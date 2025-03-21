@@ -1,4 +1,3 @@
-// app/(views)/ShoppingCart.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -8,7 +7,6 @@ import Link from "next/link";
 
 /**
  * Función de ayuda para calcular el subtotal.
- * Ajusta según tu estructura y tipos de datos.
  */
 const getSubTotal = (cart: any[]) => {
   return cart.reduce(
@@ -22,6 +20,10 @@ export default function ShoppingCart() {
 
   // Subtotal del carrito
   const subTotal = getSubTotal(cart);
+
+  // Si tuvieras envío fijo o cálculo de envío, podrías ajustarlo aquí
+  const shippingCost = 0; // Ejemplo: "Free"
+  const total = subTotal + shippingCost;
 
   // Estado para el código de cupón
   const [couponCode, setCouponCode] = useState("");
@@ -151,16 +153,21 @@ export default function ShoppingCart() {
           {/* Shipping */}
           <div className="flex justify-between mb-2">
             <span className="text-gray-600">Shipping</span>
-            <span className="font-semibold">Free</span>
+            <span className="font-semibold">
+              {shippingCost === 0 ? "Free" : `$${shippingCost}`}
+            </span>
           </div>
           {/* Total */}
           <div className="flex justify-between mb-4 border-b border-gray-200 pb-2">
             <span className="text-gray-600">Total</span>
-            <span className="font-semibold">${subTotal}</span>
+            <span className="font-semibold">${total}</span>
           </div>
-          <button className="bg-red-500 text-white w-full py-2 rounded hover:bg-red-600">
+          <Link
+            href="/cart/checkout"
+            className="bg-red-500 text-white w-full inline-block text-center py-2 rounded hover:bg-red-600"
+          >
             Proceed to checkout
-          </button>
+          </Link>
         </div>
       </div>
 
