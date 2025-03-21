@@ -1,4 +1,3 @@
-// app/(views)/shoppingcart/checkout/page.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -7,7 +6,7 @@ import Image from "next/image";
 
 const Checkout = () => {
   // Obtenemos los productos del carrito
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
 
   // Estado para mostrar el mensaje de confirmación
   const [orderPlaced, setOrderPlaced] = useState(false);
@@ -45,6 +44,7 @@ const Checkout = () => {
       cart,
     });
 
+    clearCart();
     // Simulamos que se completó la compra
     setOrderPlaced(true);
   };
